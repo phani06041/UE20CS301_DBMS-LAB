@@ -1,0 +1,135 @@
+-- DML COMMANDS FOR RAILWAY RESERVATION SYSTEM --
+
+use Railway_Reservation_System;
+insert into train values('KA01','HUBBALLI','KUNDGOL',8,'passenger','rani channamma'),
+('KA02','HUBBALLI','SAUNSHI',4,'passenger','ksr'),
+('KA04','HUBBALLI','GUDGERI',6,'passenger','rani channamma'),
+('KA05','HUBBALLI','HAVERI',7,'express','jan shatabdi express'),
+('KA06','HAVERI','DAVANAGERE',5,'express','ksr'),
+('KA07','HAVERI','BENGALURU',3,'express','rani channamma');
+desc train;
+SELECT * FROM TRAIN;
+insert into compartment values('KA01','C1','CT1',10,'YES');
+insert into compartment value('KA02','C2','CT2',4,'NO');
+insert into compartment value('KA04','C5','CT3',8,'YES');
+insert into compartment value('KA05','C4','CT2',7,'NO');
+insert into compartment value('KA06','C3','CT1',9,'YES');
+insert into compartment value('KA07','C6','CT4',3,'NO');
+SELECT * FROM COMPARTMENT;
+DESC COMPARTMENT;
+
+INSERT INTO route_info values('KA01','H01','HUBBALLI','KU01','KUNDAGOL',10);
+INSERT INTO route_info values('KA02','H01','HUBBALLI','S01','SAUNSHI',10);
+INSERT INTO route_info values('KA04','H01','HUBBALLI','G01','GUDGERI',10);
+INSERT INTO route_info values('KA05','H01','HUBBALLI','HA01','HAVERI',10);
+INSERT INTO route_info values('KA06','HA01','HAVERI','DV01','DAVANAGERE',10);
+INSERT INTO route_info values('KA07','HA01','HAVERI','BN01','BENGALURU',10);
+SELECT * FROM ROUTE_INFO;
+
+INSERT INTO USER VALUES('U1','UT1','JOSEPH','ADAM',20,11,'SN01','2002-11-17');
+INSERT INTO USER VALUES('U2','UT2','BRIAN','MARY',20,12,'SN02','2002-09-22');
+INSERT INTO USER VALUES('U3','UT3','RICHARD','THOMAS',18,13,'SN03','2004-11-18');
+INSERT INTO USER VALUES('U4','UT4','CHARLES','DARVIN',19,14,'SN04','2003-05-09');
+INSERT INTO USER VALUES('U5','UT5','JOHN','DAVID',15,16,'SN05','2007-02-27');
+INSERT INTO USER VALUES('U6','UT6','BEN','TEN',17,19,'SN06','2005-04-15');
+SELECT * FROM USER;
+
+INSERT INTO USER_TRAIN VALUES('KA01','U1',7);
+INSERT INTO USER_TRAIN VALUES('KA02','U2',8);
+INSERT INTO USER_TRAIN VALUES('KA04','U3',10);
+INSERT INTO USER_TRAIN VALUES('KA05','U4',4);
+INSERT INTO USER_TRAIN VALUES('KA06','U5',2);
+INSERT INTO USER_TRAIN VALUES('KA02','U6',13);
+INSERT INTO USER_TRAIN VALUES('KA01','U5',9);
+INSERT INTO USER_TRAIN VALUES('KA04','U3',3);
+SELECT * FROM USER_TRAIN;
+
+INSERT INTO USER_PHONE VALUES('U1',6363765944);
+INSERT INTO USER_PHONE VALUES('U2',8152996860);
+INSERT INTO USER_PHONE VALUES('U3',8150067422);
+INSERT INTO USER_PHONE VALUES('U4',6373810372);
+INSERT INTO USER_PHONE VALUES('U5',7439026822);
+INSERT INTO USER_PHONE VALUES('U6',8302217653);
+SELECT * FROM USER_PHONE;
+
+INSERT INTO TICKET VALUES('PNR1','KA01','2020-09-13','HUBBALLI','KUNDGOL','21:00PM','21:15PM','U1','PASSENGER','CT1','C1');
+INSERT INTO TICKET VALUES('PNR2','KA02','2020-09-24','HUBBALLI','SAUNSHI','12:00PM','12:45PM','U2','PASSENGER','CT2','C2');
+INSERT INTO TICKET VALUES('PNR3','KA04','2020-09-18','HUBBALLI','GUDGERI','22:30PM','23:00PM','U3','PASSENGER','CT3','C3');
+INSERT INTO TICKET VALUES('PNR4','KA05','2020-10-13','HUBBALLI','HAVERI','19:00PM','21:15PM','U4','EXPRESS','CT1','C1');
+INSERT INTO TICKET VALUES('PNR5','KA06','2020-10-04','HAVERI','DAVANAGERE','16:00PM','21:15PM','U5','EXPRESS','CT4','C3');
+INSERT INTO TICKET VALUES('PNR6','KA01','2020-09-15','HUBBALLI','KUNDGOL','4:00PM','4:15PM','U3','PASSENGER','CT1','C4');
+INSERT INTO TICKET VALUES('PNR7','KA05','2020-10-01','HUBBALLI','HAVERI','2:00PM','5:15PM','U5','PASSENGER','CT4','C3');
+INSERT INTO TICKET VALUES('PNR8','KA04','2020-09-25','HUBBALLI','GUDGERI','11:00PM','11:35PM','U6','PASSENGER','CT3','C1');
+SELECT * FROM TICKET;
+
+use Railway_Reservation_System;
+INSERT INTO PAYMENT_INFO VALUES('T1','UBI','CN1',12000,'PNR1');
+INSERT INTO PAYMENT_INFO VALUES('T2','SBI','CN2',22000,'PNR2');
+INSERT INTO PAYMENT_INFO VALUES('T3','ICICI','CN3',40000,'PNR3');
+INSERT INTO PAYMENT_INFO VALUES('T4','CANARA BANK','CN4',14600,'PNR4');
+
+SELECT * FROM PAYMENT_INFO;
+
+INSERT INTO TICKET_PASSENGER values('SN01','JOSEPH',20,'pnr1');
+INSERT INTO TICKET_PASSENGER values('SN02','BRIAN',20,'pnr2');
+INSERT INTO TICKET_PASSENGER values('SN03','RICHARD',18,'PNR3');
+INSERT INTO TICKET_PASSENGER values('SN04','CHARLES',19,'PNR4');
+INSERT INTO TICKET_PASSENGER values('SN05','JOHN',15,'PNR5');
+INSERT INTO TICKET_PASSENGER values('SN06','BEN',17,'PNR6');
+SELECT * FROM TICKET_PASSENGER;
+
+INSERT INTO FARE_DETAILS VALUES('PASSENGER','CT1',54.8);
+INSERT INTO FARE_DETAILS VALUES('EXPRESS','CT2',34.8);
+INSERT INTO FARE_DETAILS VALUES('EXPRESS','CT3',47.2);
+INSERT INTO FARE_DETAILS VALUES('PASSENGER','CT4',26.9);
+INSERT INTO FARE_DETAILS VALUES('EXPRESS','CT5',63.1);
+INSERT INTO FARE_DETAILS VALUES('PASSENGER','CT6',37.6);
+SELECT * FROM FARE_DETAILS;
+
+UPDATE USER SET AGE=21 WHERE USER_ID='U1';
+SELECT * FROM USER;
+
+
+UPDATE route_info  SET DISTANCE=40 WHERE TRAIN_NO='KA01';
+UPDATE route_info  SET DISTANCE=90 WHERE TRAIN_NO='KA02';
+UPDATE route_info  SET DISTANCE=100 WHERE TRAIN_NO='KA04';
+UPDATE route_info  SET DISTANCE=80 WHERE TRAIN_NO='KA05';
+UPDATE route_info  SET DISTANCE=75 WHERE TRAIN_NO='KA06';
+UPDATE route_info  SET DISTANCE=55 WHERE TRAIN_NO='KA07';
+SELECT * FROM ROUTE_INFO;
+SELECT * FROM ROUTE_INFO WHERE 70<DISTANCE and distance<150;
+
+update route_info set From_station_name='chennai' where Train_no='KA01';
+update route_info set To_station_name='sholingur' where Train_no='KA01';
+select * from route_info;
+select * from route_info where From_station_name='chennai' and To_station_name='sholingur';
+select * from train where train_type!='mail';
+update route_info set From_station_name='bangalore' where Train_no='KA02';
+update route_info set To_station_name='chennai' where Train_no='KA02';
+select Train_name,Train_no from train where Train_no=(select train_no from route_info  where From_station_name="bangalore" and To_station_name="chennai");
+select train_no from route_info  where From_station_name='bangalore' and To_station_name='chennai';
+select * from ticket where departure='hubballi' and departure_time='21:00PM';
+SELECT * FROM USER WHERE DOB HAVING 2002 AND 2004;
+SELECT * FROM USER WHERE FNAME LIKE 'C%';
+SELECT AVAILABILITY FROM TRAIN WHERE TRAIN_NO='KA02';
+SELECT PNR,TRANSACTION_ID FROM PAYMENT_INFO WHERE BANK='UBI';
+
+create user phani@localhost identified by 'phani@12';
+GRANT SELECT, INSERT, UPDATE, DELETE ON route_info TO 'phani'@'localhost';
+grant select on *.* to phani@localhost;
+GRANT ALL ON train TO 'phani'@'localhost';
+REVOKE DELETE, UPDATE ON train FROM 'phani'@'localhost';
+REVOKE ALL ON train from 'phani'@'localhost';
+SET autocommit=0 | 1;
+revoke update on *.* from phani@localhost;
+revoke delete on *.* from phani@localhost;
+SAVEPOINT SP1;
+DELETE FROM payment_info where bank='ubi';
+SAVEPOINT SP2;
+ROLLBACK TO SP1;
+RELEASE SAVEPOINT SP2;
+
+
+
+
+

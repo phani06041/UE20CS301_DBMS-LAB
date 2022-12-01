@@ -1,0 +1,11 @@
+use Railway_Reservation_System;
+SELECT AVG(distance) FROM route_info group by train_no;
+SELECT AVG(distance) FROM route_info group by train_no order by distance desc;
+SELECT train_no,AVG(distance) FROM route_info group by train_no order by distance desc;
+select train_name,max(availability) from train;
+select train_name,min(availability) from train;
+select phone_no from user_phone where user_id in ('u1','u2','u3');
+select avg(fareperkm) from fare_details group by train_type;
+select train_type,avg(fareperkm) as Avg_fare from fare_details group by train_type order by Avg_fare desc;
+select * from ticket_passenger where age>18;
+select count(name) from ticket_passenger where name like 'ch%';
